@@ -3,7 +3,7 @@
 <h1>Задание 1</h1>
 После раздела дисков, настройки LVM и RAID:
 <br>
-<img src="laba 2/images/1.png" alt="Изображение не загрузилось">
+<img src="https://raw.githubusercontent.com/DTaSchweppes/OS-Labs-Repositoryy/master/laba%202/images/1.png" alt="Изображение не загрузилось">
 Ставим Grub на первое устройство (sda):
 <br>
 <img src="laba 2/images/2.png" alt="Изображение не загрузилось">
