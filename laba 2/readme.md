@@ -6,22 +6,22 @@
 <img src="https://raw.githubusercontent.com/DTaSchweppes/OS-Labs-Repositoryy/master/laba%202/images/1.png" alt="Изображение не загрузилось">
 Ставим Grub на первое устройство (sda):
 <br>
-<img src="laba 2/images/2.png" alt="Изображение не загрузилось">
+<img src="https://raw.githubusercontent.com/DTaSchweppes/OS-Labs-Repositoryy/master/laba%202/images/2.png" alt="Изображение не загрузилось">
 ОС установлена, проверяем :
 <br>
-<img src="laba 2/images/3.png" alt="Изображение не загрузилось">
+<img img src="https://raw.githubusercontent.com/DTaSchweppes/OS-Labs-Repositoryy/master/laba%202/images/3.png" alt="Изображение не загрузилось">
 Копируем содержимое /boot с диска sda (ssd1) на диск sdb (ssd2)
 <br>
-<img src="laba 2/images/4.png" alt="Изображение не загрузилось">
+<img src="https://raw.githubusercontent.com/DTaSchweppes/OS-Labs-Repositoryy/master/laba%202/images/4.png" alt="Изображение не загрузилось">
 Смотрим диски в системе:
 <br>
-<img src="laba 2/images/5.png" alt="Изображение не загрузилось">
+<img src="https://raw.githubusercontent.com/DTaSchweppes/OS-Labs-Repositoryy/master/laba%202/images/5.png" alt="Изображение не загрузилось">
 Ставим Grub на sdb и проверяем текущее состояние RAID массива:
 <br>
-<img src="laba 2/images/6.png" alt="Изображение не загрузилось">
+<img src="https://raw.githubusercontent.com/DTaSchweppes/OS-Labs-Repositoryy/master/laba%202/images/6.png" alt="Изображение не загрузилось">
 cat /proc/mdstat - в этом файле отражается текущее состояние RAID-массива
 <br>
-<img src="laba 2/images/7.png" alt="Изображение не загрузилось">
+<img src="https://raw.githubusercontent.com/DTaSchweppes/OS-Labs-Repositoryy/master/laba%202/images/7.png" alt="Изображение не загрузилось">
 pvs- отображает информацию о физическом томе, 
 их мы получили, когда volume group (группу томов) разбили на logical volume (логические тома).
 Для файловой системы логический том представлен как обычное блочное устройство
@@ -30,30 +30,30 @@ vgs- отображает информацию о группе физическ�
 mount- просмотр примонтированых устройств.
 Результат mount (но на скрине проскроллено):
 <br>
-<img src="laba 2/images/8.png" alt="Изображение не загрузилось">
+<img src="https://raw.githubusercontent.com/DTaSchweppes/OS-Labs-Repositoryy/master/laba%202/images/8.png" alt="Изображение не загрузилось">
 <h2> Задание 2</h2>
 Удаляем ssd1 из ВМ, и так же файл диска из папки, при перезагрузке попали в grub rescue:
 <br>
-<img src="laba 2/images/9.png" alt="Изображение не загрузилось">
+<img src="https://raw.githubusercontent.com/DTaSchweppes/OS-Labs-Repositoryy/master/laba%202/images/9.png" alt="Изображение не загрузилось">
 Пытаюсь через файловую систему найти boot и настроить insmod:
 <br>
-<img src="laba 2/images/10.png" alt="Изображение не загрузилось">
+<img src="https://raw.githubusercontent.com/DTaSchweppes/OS-Labs-Repositoryy/master/laba%202/images/10.png" alt="Изображение не загрузилось">
 Пытаюсь сделать иначе:
 <br>
-<img src="laba 2/images/11.png" alt="Изображение не загрузилось">
+<img src="https://raw.githubusercontent.com/DTaSchweppes/OS-Labs-Repositoryy/master/laba%202/images/11.png" alt="Изображение не загрузилось">
 Переустановив, второй раз такой проблемы не возникло.
 Копируем таблицу разделов со старого диска на новый: sfdisk -d /dev/sda | sfdisk /dev/sdb:
 <br>
-<img src="laba 2/images/12.png" alt="Изображение не загрузилось">
+<img src="https://raw.githubusercontent.com/DTaSchweppes/OS-Labs-Repositoryy/master/laba%202/images/12.png" alt="Изображение не загрузилось">
 <br>
-<img src="laba 2/images/13.png" alt="Изображение не загрузилось">
+<img src="https://raw.githubusercontent.com/DTaSchweppes/OS-Labs-Repositoryy/master/laba%202/images/13.png" alt="Изображение не загрузилось">
 mdadm —manage /dev/md0 —add /dev/sdb:
 <br>
-<img src="laba 2/images/14.png" alt="Изображение не загрузилось">
+<img src="https://raw.githubusercontent.com/DTaSchweppes/OS-Labs-Repositoryy/master/laba%202/images/14.png" alt="Изображение не загрузилось">
 Тут мы добавили в RAID массив новый диск
 Cинхронизируем разделы, не входящие в RAID, копируя с "живого" диска на новый: dd if=/dev/sda1 of=/dev/sdb1:
 <br>
-<img src="laba 2/images/15.png" alt="Изображение не загрузилось">
+<img src="https://raw.githubusercontent.com/DTaSchweppes/OS-Labs-Repositoryy/master/laba%202/images/15.png" alt="Изображение не загрузилось">
 В результате мы:
 проэмулировали отказ одного из дисков
 удалили диск ssd1
@@ -64,85 +64,84 @@ ssd2 мы сохранили
 
 sfdisk -d /dev/sda | sfdisk /dev/sdb (Копируем файловую таблицу со старого диска на новый):
 <br>
-<img src="laba 2/images/16.png" alt="Изображение не загрузилось">
+<img src="https://raw.githubusercontent.com/DTaSchweppes/OS-Labs-Repositoryy/master/laba%202/images/16.png" alt="Изображение не загрузилось">
 При выводе мы замечаем, что в новом диске sdb появились разделы: sdb1, sdb2:
 <br>
-<img src="laba 2/images/17.png" alt="Изображение не загрузилось">
+<img src="https://raw.githubusercontent.com/DTaSchweppes/OS-Labs-Repositoryy/master/laba%202/images/17.png" alt="Изображение не загрузилось">
 Далее ставим grub-install /dev/sdb на новый диск sdb
 В итоге у нас установлен новый RAID-массив md63, проверяем при помощи команды cat /proc/mdstat:
 <br>
-<img src="laba 2/images/18.png" alt="Изображение не загрузилось">
+<img src="https://raw.githubusercontent.com/DTaSchweppes/OS-Labs-Repositoryy/master/laba%202/images/18.png" alt="Изображение не загрузилось">
 Создаём новый физический том, включив в него ранее созданный RAID-массив: pvcreate /dev/md63:
 <br>
-<img src="laba 2/images/19.png" alt="Изображение не загрузилось">
+<img src="https://raw.githubusercontent.com/DTaSchweppes/OS-Labs-Repositoryy/master/laba%202/images/19.png" alt="Изображение не загрузилось">
 vgextend system /dev/sda:
 <br>
-<img src="laba 2/images/20.png" alt="Изображение не загрузилось">
+<img src="https://raw.githubusercontent.com/DTaSchweppes/OS-Labs-Repositoryy/master/laba%202/images/20.png" alt="Изображение не загрузилось">
 LV var,log,root находятся на диске sda:
 <br>
-<img src="laba 2/images/21.png" alt="Изображение не загрузилось">
+<img src="https://raw.githubusercontent.com/DTaSchweppes/OS-Labs-Repositoryy/master/laba%202/images/21.png" alt="Изображение не загрузилось">
 Перемещаем данные со старого диска на новый, подставив правильные имена устройств:
 <br>
-<img src="laba 2/images/22.png" alt="Изображение не загрузилось">
+<img src="https://raw.githubusercontent.com/DTaSchweppes/OS-Labs-Repositoryy/master/laba%202/images/22.png" alt="Изображение не загрузилось">
 vgdisplay system -v:
 <br>
-<img src="laba 2/images/23.png" alt="Изображение не загрузилось">
+<img src="https://raw.githubusercontent.com/DTaSchweppes/OS-Labs-Repositoryy/master/laba%202/images/23.png" alt="Изображение не загрузилось">
 pvs:
 <br>
-<img src="laba 2/images/24.png" alt="Изображение не загрузилось">
+<img src="https://raw.githubusercontent.com/DTaSchweppes/OS-Labs-Repositoryy/master/laba%202/images/24.png" alt="Изображение не загрузилось">
 vgs
 lvs -a -o+devices
 lsblk -o NAME,SIZE,FSTYPE,TYPE,MOUNTPOINT:
 <br>
-<img src="laba 2/images/25.png" alt="Изображение не загрузилось">
+<img src="https://raw.githubusercontent.com/DTaSchweppes/OS-Labs-Repositoryy/master/laba%202/images/25.png" alt="Изображение не загрузилось">
 Что поменялось:
 <br>
-<img src="laba 2/images/26.png" alt="Изображение не загрузилось">
+<img src="https://raw.githubusercontent.com/DTaSchweppes/OS-Labs-Repositoryy/master/laba%202/images/26.png" alt="Изображение не загрузилось">
 Изменим наш VG, удалив из него диск старого raid:
 <br>
-<img src="laba 2/images/27.png" alt="Изображение не загрузилось">
+<img src="https://raw.githubusercontent.com/DTaSchweppes/OS-Labs-Repositoryy/master/laba%202/images/27.png" alt="Изображение не загрузилось">
 lsblk -o NAME,SIZE,FSTYPE,TYPE,MOUNTPOINT
 pvs
 vgs:
 <br>
-<img src="laba 2/images/28.png" alt="Изображение не загрузилось">
+<img src="https://raw.githubusercontent.com/DTaSchweppes/OS-Labs-Repositoryy/master/laba%202/images/28.png" alt="Изображение не загрузилось">
 Удаляем ssd3 диск и добавляем ssd5, hdd1, hdd2
 Смотрим что вышло:
 <br>
-<img src="laba 2/images/29.png" alt="Изображение не загрузилось">
+<img src="https://raw.githubusercontent.com/DTaSchweppes/OS-Labs-Repositoryy/master/laba%202/images/29.png" alt="Изображение не загрузилось">
 Выполняем копирование таблицы разделов, подставив правильные диски:
 <br>
-<img src="laba 2/images/30.png" alt="Изображение не загрузилось">
+<img src="https://raw.githubusercontent.com/DTaSchweppes/OS-Labs-Repositoryy/master/laba%202/images/30.png" alt="Изображение не загрузилось">
 10.скопируйте загрузочный раздел /boot с диска ssd4 на ssd5:
 <br>
-<img src="laba 2/images/31.png" alt="Изображение не загрузилось">
+<img src="https://raw.githubusercontent.com/DTaSchweppes/OS-Labs-Repositoryy/master/laba%202/images/31.png" alt="Изображение не загрузилось">
 Ставим grub на новый диск, меняем размер, запускаем fdisk /dev/sda вводим ключи по инструкции.
 Перечитаем таблицу разделов и проверим результат:
 <br>
-<img src="laba 2/images/32.png" alt="Изображение не загрузилось">
+<img src="https://raw.githubusercontent.com/DTaSchweppes/OS-Labs-Repositoryy/master/laba%202/images/32.png" alt="Изображение не загрузилось">
 Получили sda2 и sdb2 разделы, которые имеют размер > чем размер RAID-устройство.
 Увеличили объём памяти ssd4, ssd5 после (mdadm --grow /dev/md63 --size=max)
 <br>
-<img src="laba 2/images/33.png" alt="Изображение не загрузилось">
+<img src="https://raw.githubusercontent.com/DTaSchweppes/OS-Labs-Repositoryy/master/laba%202/images/33.png" alt="Изображение не загрузилось">
 17 пункт:
 <br>
-<img src="laba 2/images/34.png" alt="Изображение не загрузилось">
+<img src="https://raw.githubusercontent.com/DTaSchweppes/OS-Labs-Repositoryy/master/laba%202/images/34.png" alt="Изображение не загрузилось">
 18 пункт:
 <br>
-<img src="laba 2/images/35.png" alt="Изображение не загрузилось">
+<img src="https://raw.githubusercontent.com/DTaSchweppes/OS-Labs-Repositoryy/master/laba%202/images/35.png" alt="Изображение не загрузилось">
 Завершили миграцию основного массива на новые диски. работа с ssd1,ssd2 закончена
 19 пункт. Перемещаем /var/log на новые диски, для этого создаем новый RAID-массив, создаём логический том:
 <br>
-<img src="laba 2/images/36.png" alt="Изображение не загрузилось">
+<img src="https://raw.githubusercontent.com/DTaSchweppes/OS-Labs-Repositoryy/master/laba%202/images/36.png" alt="Изображение не загрузилось">
 20 пункт. Переносим данные логов со старого раздела на новый:
 <br>
-<img src="laba 2/images/37.png" alt="Изображение не загрузилось">
+<img src="https://raw.githubusercontent.com/DTaSchweppes/OS-Labs-Repositoryy/master/laba%202/images/37.png" alt="Изображение не загрузилось">
 21.cat etc/fstab: <br>fstab - файл, в котором записываются правила, по которым при загрузке будут смонтированы раздеы наша задача - найти ту строку, в которой монтируется /var/log и поправить устройство system-log на data-var_log
-<br>
-<img src="laba 2/images/38.png" alt="Изображение не загрузилось">
+<br><img src="https://raw.githubusercontent.com/DTaSchweppes/OS-Labs-Repositoryy/master/laba%202/images/38.png" alt="Изображение не загрузилось">
 Изменяем таблицу разделов командой: resize2fs. И после перезагрузки:
 <br>
-<img src="laba 2/images/39.png" alt="Изображение не загрузилось">
+<img src="https://raw.githubusercontent.com/DTaSchweppes/OS-Labs-Repositoryy/master/laba%202/images/39.png" alt="Изображение не загрузилось">
 <br>
-<img src="laba 2/images/40.png" alt="Изображение не загрузилось">
+<img src="https://raw.githubusercontent.com/DTaSchweppes/OS-Labs-Repositoryy/master/laba%202/images/40.png" alt="Изображение не загрузилось">
 Что было сделано: замена дисков на лету, с добавлением новых дисков и переносом разделов.
